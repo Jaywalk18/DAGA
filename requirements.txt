@@ -1,0 +1,22 @@
+# DAGA: Dynamic Attention-Guided Adapter
+# PyTorch and DINOv3 should be installed first
+
+# Core dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+tqdm>=4.65.0
+numpy>=1.24.0
+
+# Logging
+swanlab>=0.7.0
+
+# Visualization
+matplotlib>=3.7.0
+opencv-python>=4.8.0
+
+# Detection (COCO)
+pycocotools>=2.0.6
+
+# Depth Estimation
+h5py>=3.8.0
+
