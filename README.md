@@ -15,7 +15,7 @@ We propose **DAGA** (Dynamic Attention-Guided Adaptation), a parameter-efficient
 ## Method
 
 <p align="center">
-  <img src="assets/method.png" width="80%" alt="DAGA Architecture">
+  <img src="assets/architecture.png" width="80%" alt="DAGA Architecture">
 </p>
 
 DAGA consists of three key components:
@@ -161,6 +161,14 @@ Multi-seed (n=3): DAGA **85.77 ± 0.06**, the tightest seed-to-seed std among PE
 | AdaptFormer | 0.446 | 90.4 |
 | ViT-Adapter | 0.437 | 91.0 |
 | **DAGA (Ours)** | **0.432** | **91.3** |
+
+### Qualitative Visualization
+
+<p align="center">
+  <img src="assets/visualization.png" width="95%" alt="DAGA vs Baseline feature similarity">
+</p>
+
+Category-wise feature-similarity heatmaps comparing DAGA against the frozen DINOv3 baseline on (a) indoor and (b) outdoor scenes. DAGA produces focused, object-centric responses (sharp peaks on *refrigerator*, *clock*, *kite*, *motorcycle*, etc.), while the baseline exhibits diffuse responses spreading across irrelevant regions.
 
 ### Cross-Backbone Generalization
 
