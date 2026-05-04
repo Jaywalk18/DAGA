@@ -1,7 +1,7 @@
 # DAGA: Dynamic Attention-Guided Adaptation for Vision Foundation Models
 
 <p align="center">
-  <b>NeurIPS 2026 (Under Review)</b>
+  <b>NeurIPS 2026</b>
 </p>
 
 ---
