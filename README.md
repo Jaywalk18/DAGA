@@ -203,20 +203,6 @@ Dino_DAGA/
 
 ---
 
-## Citation
-
-```bibtex
-@inproceedings{anonymous2026daga,
-  title={DAGA: Dynamic Attention-Guided Adaptation for Vision Foundation Models},
-  author={Anonymous},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2026},
-  note={Under review}
-}
-```
-
----
-
 ## Acknowledgments
 
 This work builds upon:
