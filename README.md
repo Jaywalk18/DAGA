@@ -278,7 +278,7 @@ If you find this work useful, please cite:
 ```bibtex
 @inproceedings{zhou2026daga,
   title     = {DAGA: Dynamic Attention-Guided Adaptation for Self-Supervised Vision Transformers},
-  author    = {Zhou, Tianjian and Jie, Jiang and Li, Yishan and Zhang, Yifei},
+  author    = {Zhou, Tianjian and Jiang, Jie and Li, Yishan and Zhang, Yifei},
   booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   year      = {2026}
 }
