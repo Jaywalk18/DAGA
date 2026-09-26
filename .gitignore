@@ -37,12 +37,21 @@ venv/
 
 # Outputs
 outputs/
+results/
 logs/
+swanlog/
 *.log
+
+# Experiment outputs
+paper_experiments/outputs/
+visualization/results/
+visualization/output/
 
 # Checkpoints (keep .gitkeep)
 checkpoints/*
 !checkpoints/.gitkeep
+*.pth
+*.ckpt
 
 # Data
 data/cifar*

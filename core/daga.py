@@ -98,7 +98,7 @@ class AdaptationLayer(nn.Module):
         self,
         feature_dim: int = 768,
         guidance_dim: int = 128,
-        mlp_ratio: float = 0.25,
+        mlp_ratio: float = 0.14,
         drop_rate: float = 0.0,
         layer_idx: int = 0,
         total_layers: int = 4,
@@ -189,7 +189,7 @@ class DAGA(nn.Module):
         feature_dim: int = 768,
         daga_layers: List[int] = [1, 2, 10, 11],
         guidance_dim: int = 128,
-        mlp_ratio: float = 0.25,
+        mlp_ratio: float = 0.14,
         drop_rate: float = 0.1,
     ):
         super().__init__()
@@ -302,7 +302,7 @@ def create_daga(
     feature_dim: int = 768,
     daga_layers: List[int] = [1, 2, 10, 11],
     drop_rate: float = 0.1,
-    mlp_ratio: float = 0.25,
+    mlp_ratio: float = 0.167,
 ) -> DAGA:
     """Create a DAGA module with specified configuration."""
     return DAGA(

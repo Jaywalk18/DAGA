@@ -34,7 +34,7 @@ setup_environment() {
 # ============================================================================
 # Model settings
 MODEL_NAME="${MODEL_NAME:-dinov3_vitb16}"
-PRETRAINED_PATH="${PRETRAINED_PATH:-dinov3_vitb16_pretrain.pth}"
+PRETRAINED_PATH="${PRETRAINED_PATH:-dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth}"
 
 # Path settings (MODIFY THESE)
 PROJECT_ROOT="${PROJECT_ROOT:-$(dirname $(dirname $(realpath $0)))}"
