@@ -8,8 +8,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 source "${PROJECT_ROOT}/scripts/common_config.sh"
 
 OUTPUT_BASE="paper_experiments/outputs/classification/sun397"
-# Use SSD for faster IO
-DATA_PATH="/mnt/ssd/SUN397"
+DATA_PATH="${DAGA_SUN397_PATH:?Set DAGA_SUN397_PATH to your SUN397 root}"
 GPU_IDS="${GPU_IDS:-0,1,2}"
 
 # Learning rates (same as ImageNet)

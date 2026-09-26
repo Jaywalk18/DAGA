@@ -15,7 +15,7 @@ NUM_WORKERS=8
 
 # ImageNet-C dataset
 DATASET="imagenet_c"
-DATA_PATH="/path/to/imagenet-c"  # MODIFY THIS
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the ImageNet-C root}"
 
 setup_environment
 setup_paths

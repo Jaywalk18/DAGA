@@ -38,7 +38,7 @@ TASK_CONFIGS = {
     "classification": {
         "script": "main_classification.py",
         "dataset": "imagenet",
-        "data_path": "/mnt/ssd/imagenet",
+        "data_env": "DAGA_IMAGENET_PATH",
         "input_size": 224,
         "metric_pattern": r"Best Acc:\s*([\d.]+)%",
         "direction": "maximize",
@@ -46,7 +46,7 @@ TASK_CONFIGS = {
     "detection": {
         "script": "main_detection.py",
         "dataset": "coco",
-        "data_path": "/mnt/ssd/coco",
+        "data_env": "DAGA_COCO_PATH",
         "input_size": 518,
         "metric_pattern": r"Final mAP:\s*([\d.]+)",
         "direction": "maximize",
@@ -55,7 +55,7 @@ TASK_CONFIGS = {
     "segmentation": {
         "script": "main_segmentation.py",
         "dataset": "ade20k",
-        "data_path": "/mnt/ssd/ade20k",
+        "data_env": "DAGA_ADE20K_PATH",
         "input_size": 518,
         "metric_pattern": r"Best mIoU:\s*([\d.]+)",
         "direction": "maximize",
@@ -64,7 +64,7 @@ TASK_CONFIGS = {
     "depth": {
         "script": "main_depth.py",
         "dataset": "nyu_depth_v2",
-        "data_path": "/mnt/ssd/nyu_depth_v2",
+        "data_env": "DAGA_NYU_PATH",
         "input_size": 518,
         "metric_pattern": r"Best abs_rel:\s*([\d.]+)",
         "direction": "minimize",
@@ -86,12 +86,15 @@ def run_experiment(task, config, trial_number, output_base):
     gpu_ids = os.environ.get("GPU_IDS", "0,1,2")
     num_gpus = len(gpu_ids.split(","))
     tc = TASK_CONFIGS[task]
+    data_path = os.environ.get(tc["data_env"])
+    if not data_path:
+        raise ValueError(f"Set {tc['data_env']} to the dataset root before running {task} search")
     
     cmd = [
         "torchrun", "--standalone", "--nnodes=1", f"--nproc_per_node={num_gpus}",
         str(PROJECT_ROOT / tc["script"]),
         "--dataset", tc["dataset"],
-        "--data_path", tc["data_path"],
+        "--data_path", data_path,
         "--model_name", "dinov3_vitb16",
         "--pretrained_path", str(PROJECT_ROOT / "checkpoints/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth"),
         "--batch_size", str(get_batch_size(task)),

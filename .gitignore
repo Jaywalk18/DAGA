@@ -22,6 +22,7 @@ wheels/
 
 # Virtual environments
 .env
+.env.*
 .venv
 env/
 venv/
@@ -40,6 +41,7 @@ outputs/
 results/
 logs/
 swanlog/
+wandb/
 *.log
 
 # Experiment outputs
@@ -52,12 +54,16 @@ checkpoints/*
 !checkpoints/.gitkeep
 *.pth
 *.ckpt
+*.pt
+*.safetensors
+*.extracted
 
 # Data
 data/cifar*
 data/imagenet*
 data/coco*
 data/ade20k*
+datasets/
 
 # OS
 .DS_Store

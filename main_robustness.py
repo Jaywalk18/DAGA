@@ -129,7 +129,7 @@ class RobustnessModel(nn.Module):
                 rope_sincos = self.vit_model.rope_embed(H=H, W=W) if self.vit_model.rope_embed else None
                 
                 # Pass through block
-                    x_processed = block(x_processed, rope_sincos)
+                x_processed = block(x_processed, rope_sincos)
                 
                 # Apply DAGA AFTER block forward (modifies block output)
                 if self.use_daga and idx in self.daga_layers and daga_guidance_map is not None:

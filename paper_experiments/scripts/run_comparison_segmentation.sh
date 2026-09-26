@@ -67,7 +67,7 @@ run_exp() {
         paper_experiments/main_comparison_segmentation.py \
         --method "$method" \
         --dataset ade20k \
-        --data_path "/mnt/ssd/ade20k" \
+        --data_path "${DAGA_ADE20K_PATH:?Set DAGA_ADE20K_PATH to your ADE20K root}" \
         --model_name "$MODEL_NAME" \
         --pretrained_path "${CHECKPOINT_DIR}/${PRETRAINED_PATH}" \
         --batch_size "$batch_size" \

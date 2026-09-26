@@ -21,7 +21,7 @@ mkdir -p "$BASE_OUTPUT_DIR"
 # ROxford5k Retrieval
 # ============================================================================
 DATASET="roxford5k"
-DATA_PATH="/path/to/oxford5k"  # MODIFY THIS
+DATA_PATH="${DAGA_ROXFORD_PATH:?Set DAGA_ROXFORD_PATH to the ROxford5k root}"
 
 echo "Running ROxford5k Retrieval..."
 CUDA_VISIBLE_DEVICES=$GPU_IDS python main_retrieval.py \
@@ -38,7 +38,7 @@ CUDA_VISIBLE_DEVICES=$GPU_IDS python main_retrieval.py \
 # RParis6k Retrieval
 # ============================================================================
 DATASET="rparis6k"
-DATA_PATH="/path/to/paris6k"  # MODIFY THIS
+DATA_PATH="${DAGA_RPARIS_PATH:?Set DAGA_RPARIS_PATH to the RParis6k root}"
 
 echo "Running RParis6k Retrieval..."
 CUDA_VISIBLE_DEVICES=$GPU_IDS python main_retrieval.py \

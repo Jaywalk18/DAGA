@@ -222,7 +222,10 @@ class DAGA(nn.Module):
         
         # Cache for shared features
         self._cached_shared_features: Optional[torch.Tensor] = None
-        self._cached_attention_shape: Optional[tuple] = None
+        self._cached_attention_map: Optional[torch.Tensor] = None
+        self._cached_attention_version: Optional[int] = None
+        self._cached_training_mode: Optional[bool] = None
+        self._cached_grad_enabled: Optional[bool] = None
     
     def forward(self, patch_features: torch.Tensor, attention_map: torch.Tensor) -> torch.Tensor:
         """
@@ -253,18 +256,24 @@ class DAGA(nn.Module):
         
         B, H, W = attention_map.shape
         
-        # Only use cache during inference (training needs fresh graph for each backward)
-        if not self.training:
-            if (self._cached_shared_features is not None and 
-                self._cached_attention_shape == (B, H, W)):
-                shared_features = self._cached_shared_features
-            else:
-                shared_features = self.shared_extractor(attention_map)
-                self._cached_shared_features = shared_features
-                self._cached_attention_shape = (B, H, W)
+        # Reuse the shared encoding across insertion layers for this exact map.
+        # A shape-only key can silently reuse another image's guidance at eval.
+        # The training graph is likewise shared across the layer-specific heads.
+        if (
+            self._cached_shared_features is not None
+            and self._cached_attention_map is attention_map
+            and self._cached_attention_version == attention_map._version
+            and self._cached_training_mode == self.training
+            and self._cached_grad_enabled == torch.is_grad_enabled()
+        ):
+            shared_features = self._cached_shared_features
         else:
-            # Training: always compute fresh (no cache to avoid backward issues)
             shared_features = self.shared_extractor(attention_map)
+            self._cached_shared_features = shared_features
+            self._cached_attention_map = attention_map
+            self._cached_attention_version = attention_map._version
+            self._cached_training_mode = self.training
+            self._cached_grad_enabled = torch.is_grad_enabled()
         
         return self.layer_heads[str(layer_idx)](shared_features, H, W)
     
@@ -285,13 +294,18 @@ class DAGA(nn.Module):
     
     def clear_cache(self):
         self._cached_shared_features = None
-        self._cached_attention_shape = None
+        self._cached_attention_map = None
+        self._cached_attention_version = None
+        self._cached_training_mode = None
+        self._cached_grad_enabled = None
     
     def get_param_count(self) -> Dict[str, int]:
         shared = sum(p.numel() for p in self.shared_extractor.parameters())
         heads = sum(sum(p.numel() for p in h.parameters()) for h in self.layer_heads.values())
         layers = sum(p.numel() for p in self.layers.parameters())
-        return {'shared': shared, 'heads': heads, 'layers': layers, 'total': shared + heads + layers}
+        mix = self.mix_weight.numel()
+        return {'shared': shared, 'heads': heads, 'layers': layers, 'mix': mix,
+                'total': shared + heads + layers + mix}
     
     def get_spatial_scales(self) -> Dict[int, float]:
         """Get learned spatial scales for analysis."""

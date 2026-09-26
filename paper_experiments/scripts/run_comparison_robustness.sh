@@ -13,15 +13,15 @@ BATCH_SIZE="${BATCH_SIZE:-256}"
 INPUT_SIZE=224
 NUM_WORKERS=6
 
-# ImageNet-C 数据路径
-IMAGENET_C_PATH="/mnt/ssd/ImageNet-C/extracted"
+# ImageNet-C data root
+IMAGENET_C_PATH="${DAGA_IMAGENET_C_PATH:?Set DAGA_IMAGENET_C_PATH to your ImageNet-C root}"
 
 # All 15 corruption types and 5 severity levels for full evaluation
 CORRUPTION_TYPES="gaussian_noise shot_noise impulse_noise defocus_blur glass_blur motion_blur zoom_blur snow frost fog brightness contrast elastic_transform pixelate jpeg_compression"
 SEVERITY_LEVELS="1 2 3 4 5"
 
-# Checkpoint 路径
-CKPT_BASE="paper_experiments/outputs/classification/imagenet"
+# Trained classification checkpoints (not included in this release)
+CKPT_BASE="${DAGA_CLASSIFICATION_CKPT_DIR:-paper_experiments/outputs/classification/imagenet}"
 
 setup_environment
 cd "$PROJECT_ROOT"

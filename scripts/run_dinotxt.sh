@@ -18,7 +18,7 @@ BATCH_SIZE=64
 
 # COCO Captions dataset
 DATASET="coco_captions"
-DATA_PATH="/path/to/coco"  # MODIFY THIS (should contain train2017, annotations)
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the COCO root containing train2017 and annotations}"
 
 # Optional: CLIP pretrained text encoder weights for initialization
 CLIP_PATH=""  # MODIFY THIS if using CLIP initialization

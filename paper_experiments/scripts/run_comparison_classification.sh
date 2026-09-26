@@ -146,7 +146,7 @@ echo ""
 # ============================================================
 
 # ImageNet-1K (main benchmark)
-run_all_methods "imagenet" "/mnt/ssd/imagenet"
+run_all_methods "imagenet" "${DAGA_IMAGENET_PATH:?Set DAGA_IMAGENET_PATH to your ImageNet-1K root}"
 
 # Fine-grained datasets (uncomment as needed)
 # run_all_methods "cifar100" "/path/to/data/cifar"

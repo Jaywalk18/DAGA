@@ -28,7 +28,7 @@ run_daga_hourglass() {
 # ============================================================================
 # Example: CIFAR-100
 DATASET="cifar100"
-DATA_PATH="/path/to/cifar"  # MODIFY THIS
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the dataset root}"
 EPOCHS=30
 LR=0.5
 BATCH_SIZE=256

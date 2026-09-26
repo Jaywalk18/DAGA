@@ -67,7 +67,7 @@ run_exp() {
         paper_experiments/main_comparison_detection.py \
         --method "$method" \
         --dataset coco \
-        --data_path "/mnt/ssd/coco" \
+        --data_path "${DAGA_COCO_PATH:?Set DAGA_COCO_PATH to your COCO root}" \
         --model_name "$MODEL_NAME" \
         --pretrained_path "${CHECKPOINT_DIR}/${PRETRAINED_PATH}" \
         --batch_size "$batch_size" \

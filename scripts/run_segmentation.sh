@@ -28,7 +28,7 @@ run_daga_hourglass() {
 # ============================================================================
 # ADE20K (150 classes)
 DATASET="ade20k"
-DATA_PATH="/path/to/ade20k"  # MODIFY THIS
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the ADE20K root}"
 EPOCHS=40
 LR=1e-4
 BATCH_SIZE=8

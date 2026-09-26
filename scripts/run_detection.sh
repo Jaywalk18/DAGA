@@ -27,7 +27,7 @@ run_daga_hourglass() {
 # COCO Detection
 # ============================================================================
 DATASET="coco"
-DATA_PATH="/path/to/coco"  # MODIFY THIS (should contain train2017, val2017, annotations)
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the COCO root containing train2017, val2017, and annotations}"
 EPOCHS=24
 LR=1e-4
 BATCH_SIZE=4

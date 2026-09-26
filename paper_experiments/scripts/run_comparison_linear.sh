@@ -47,7 +47,7 @@ run_exp() {
         --standalone --nnodes=1 --nproc_per_node=$NUM_GPUS \
         main_linear.py \
         --dataset imagenet \
-        --data_path "/mnt/ssd/imagenet" \
+        --data_path "${DAGA_IMAGENET_PATH:?Set DAGA_IMAGENET_PATH to your ImageNet-1K root}" \
         --model_name "$MODEL_NAME" \
         --pretrained_path "$pretrained" \
         --batch_size "$BATCH_SIZE" \

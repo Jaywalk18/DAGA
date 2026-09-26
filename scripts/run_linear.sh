@@ -15,7 +15,7 @@ NUM_WORKERS=8
 
 # Dataset (ImageNet for linear evaluation)
 DATASET="imagenet"
-DATA_PATH="/path/to/imagenet"  # MODIFY THIS
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the ImageNet-1K root}"
 
 setup_environment
 setup_paths

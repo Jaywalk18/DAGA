@@ -27,7 +27,7 @@ run_daga_hourglass() {
 # ============================================================================
 # NYU Depth V2
 DATASET="nyu"
-DATA_PATH="/path/to/nyu_depth_v2"  # MODIFY THIS
+DATA_PATH="${DATA_PATH:?Set DATA_PATH to the NYU Depth V2 root}"
 EPOCHS=25
 LR=1e-4
 BATCH_SIZE=8
