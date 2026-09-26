@@ -530,7 +530,7 @@ def parse_arguments():
     
     # SwanLab logging arguments
     parser.add_argument("--swanlab_name", type=str, default=None, help="SwanLab experiment name")
-    parser.add_argument("--swanlab_mode", type=str, default="cloud", help="SwanLab mode (cloud/local/disabled)")
+    parser.add_argument("--swanlab_mode", type=str, default="disabled", help="SwanLab mode (cloud/local/disabled)")
     
     return parser.parse_args()
 

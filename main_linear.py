@@ -172,6 +172,7 @@ def main():
             project="DINOv3-Linear-Probing",
             experiment_name=exp_name,
             config=vars(args),
+            mode=os.environ.get("SWANLAB_MODE", "disabled"),
         )
         
         print(f"\n{'='*70}")

@@ -71,7 +71,7 @@ def setup_logging(args, task_name="classification"):
     
     # Check both environment variable and args attribute
     swanlab_mode = os.environ.get('SWANLAB_MODE', '').lower()
-    enable_swanlab = getattr(args, 'enable_swanlab', True) and swanlab_mode != 'disabled'
+    enable_swanlab = getattr(args, 'enable_swanlab', False) and swanlab_mode != 'disabled'
     
     # Store enable_swanlab in args for later use
     args.enable_swanlab = enable_swanlab
@@ -126,7 +126,7 @@ def setup_logging(args, task_name="classification"):
                 "config": vars(args),
             }
             if not swanlab_mode:
-                init_kwargs["mode"] = getattr(args, 'swanlab_mode', 'cloud')
+                init_kwargs["mode"] = getattr(args, 'swanlab_mode', 'disabled')
             swanlab.init(**init_kwargs)
         else:
             print("Warning: swanlab not available, logging disabled")

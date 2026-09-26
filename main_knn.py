@@ -192,6 +192,7 @@ def main():
             project="DINOv3-KNN-Evaluation",
             experiment_name=exp_name,
             config=vars(args),
+            mode=os.environ.get("SWANLAB_MODE", "disabled"),
         )
         
         print(f"\n{'='*70}")

@@ -43,6 +43,8 @@ DAGA_IMAGENET_PATH=/datasets/imagenet bash paper_experiments/scripts/run_compari
 
 The comparison scripts read `DAGA_IMAGENET_PATH`, `DAGA_COCO_PATH`, `DAGA_ADE20K_PATH`, `DAGA_NYU_PATH`, `DAGA_SUN397_PATH`, or `DAGA_IMAGENET_C_PATH` as applicable. `GPU_IDS`, `CHECKPOINT_DIR`, and `PRETRAINED_PATH` can be set in the environment. The shell runners are starting points for the listed task protocols; inspect their dataset layout, batch size, and training settings before use.
 
+Cloud experiment tracking is off by default. Set `SWANLAB_MODE=cloud` (and `ENABLE_SWANLAB=1` for the classification comparison shell runner) only if you want to send a run to SwanLab.
+
 Use the corresponding `paper_experiments/main_comparison_*.py` entry point when comparing with a paper table. The standalone `main_*.py` programs are task examples and can have different defaults. This release does not include downstream checkpoints or the original training logs.
 
 The attention-encoding cache in this release includes a correctness fix for successive images with the same shape. The full benchmark suite has not been rerun after that fix.
