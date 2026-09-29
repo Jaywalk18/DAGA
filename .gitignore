@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.env.*
+.venv
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints
+
+# Outputs
+outputs/
+results/
+logs/
+swanlog/
+wandb/
+*.log
+
+# Experiment outputs
+paper_experiments/outputs/
+visualization/results/
+visualization/output/
+
+# Checkpoints (keep .gitkeep)
+checkpoints/*
+!checkpoints/.gitkeep
+*.pth
+*.ckpt
+*.pt
+*.safetensors
+*.extracted
+
+# Data
+data/cifar*
+data/imagenet*
+data/coco*
+data/ade20k*
+datasets/
+
+# OS
+.DS_Store
+Thumbs.db
+
